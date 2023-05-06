@@ -1,4 +1,4 @@
-## Cách giải bài CTF
+## Writeup
 
 Giao diện trang web:
 
