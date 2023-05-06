@@ -1,0 +1,33 @@
+version: '3'
+
+services: 
+  public:  
+    build: public/
+    ports:
+      - "5000:5000"
+    links:
+      - db
+    networks:
+      - int
+      - ext
+    environment:
+      - LOG_SERVER_HOST=logger:8000
+  db:
+    image: mongo:latest
+    networks:
+      - int
+  logger:
+    build: logger/
+    networks:
+      - int
+    environment:
+      - PORT=8000
+      - HOST=0.0.0.0
+      - FLAG1=VCS{pr0t0typ3_p0is0nin9_1s_e4sY!}
+      - FLAG2=VCS{pr0t0typ3_p0lluT10n_1s_e4sY_t00!}
+      - ADMINPW=AdminVCS@123
+
+networks:
+  int:
+  ext:
+    external: false
